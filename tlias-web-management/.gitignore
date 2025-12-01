@@ -1,0 +1,21 @@
+# 1. Build artifacts (Maven/Gradle)
+/target/
+/build/
+*.jar
+*.war
+*.ear
+
+# 2. IDE Files (IntelliJ IDEA)
+.idea/
+*.iml
+*.iws
+*.ipr
+/out/
+
+# 3. System Files
+.DS_Store
+Thumbs.db
+
+# 4. Logs and Temp Files
+*.log
+/temp/
