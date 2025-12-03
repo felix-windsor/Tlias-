@@ -4,12 +4,32 @@ import com.shengxi.pojo.Emp;
 import com.shengxi.pojo.EmpQueryParam;
 import com.shengxi.pojo.PageResult;
 
+import java.util.List;
+
 public interface EmpService {
 
     /**
      * 分页查询
      */
     PageResult<Emp> page(EmpQueryParam empQueryParam);
+
+    /**
+     * 新增员工
+     */
+    void save(Emp emp) throws Exception;
+
+    /**
+     * 删除员工
+     */
+    void delete(List<Integer> ids);
+
+    Emp getInfo(Integer id);
+
+    /**
+     * 更新员工信息
+     * @param emp
+     */
+    void update(Emp emp);
 
     /**
      * 分页查询
