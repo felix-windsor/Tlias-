@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengxi.mapper.LogMapper">
+
+    <select id="list" parameterType="com.shengxi.pojo.LogQueryParam" resultType="com.shengxi.pojo.OperateLog">
+        select
+            id,
+            null as operateEmpId,
+            operate_time as operateTime,
+            null as className,
+            null as methodName,
+            info as methodParams,
+            info as returnValue,
+            0 as costTime,
+            null as operateEmpName
+        from emp_log
+        order by operate_time desc
+    </select>
+
+</mapper>
+

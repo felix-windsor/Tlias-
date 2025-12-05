@@ -3,11 +3,10 @@ package com.shengxi.mapper;
 
 import com.shengxi.pojo.Emp;
 import com.shengxi.pojo.EmpQueryParam;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * 员工信息
@@ -39,5 +38,17 @@ public interface EmpMapper {
      * 更新员工基本信息
      */
     void updateById(Emp emp);
+
+    /**
+     * 统计各个职位的员工人数
+     */
+    @MapKey("pos")
+    List<Map<String,Object>> countEmpJobData();
+
+    /**
+     * 统计员工性别信息
+     */
+    @MapKey("name")
+    List<Map> countEmpGenderData();
 }
 

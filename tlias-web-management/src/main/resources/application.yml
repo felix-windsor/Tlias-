@@ -22,18 +22,18 @@ mybatis:
     map-underscore-to-camel-case: true
 
 #配置事务管理日志级别
-#logging:
-#  level:
-#    org.springframework.jdbc.support.JdbcTransactionManager: debug
 logging:
   level:
-    root: INFO
-    org:
-      apache:
-        tomcat: WARN # 隐藏 Tomcat 的详细日志
-      springframework:
-        web: INFO
-    javax.management: WARN # 隐藏 RMI/JMX 相关的 DEBUG 日志
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+#logging:
+#  level:
+#    root: INFO
+#    org:
+#      apache:
+#        tomcat: WARN # 隐藏 Tomcat 的详细日志
+#      springframework:
+#        web: INFO
+#    javax.management: WARN # 隐藏 RMI/JMX 相关的 DEBUG 日志
 
 
 # 阿里云OSS
@@ -43,3 +43,6 @@ aliyun:
         bucket-name: java-ai-01-test1
         region: cn-beijing
 
+## 更换服务端口号
+#server:
+#  port: 8082
