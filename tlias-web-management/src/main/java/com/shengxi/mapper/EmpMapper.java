@@ -50,5 +50,10 @@ public interface EmpMapper {
      */
     @MapKey("name")
     List<Map> countEmpGenderData();
+
+    /**
+     * 根据职位查询员工（用于下拉）
+     */
+    List<Emp> listByJob(Integer job);
 }
 

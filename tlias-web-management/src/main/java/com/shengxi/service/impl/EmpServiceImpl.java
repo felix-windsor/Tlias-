@@ -97,4 +97,9 @@ public class EmpServiceImpl implements EmpService {
         empExprMapper.deleteByEmpIds(ids);
 
     }
+
+    @Override
+    public java.util.List<Emp> listByJob(Integer job) {
+        return empMapper.listByJob(job);
+    }
 }

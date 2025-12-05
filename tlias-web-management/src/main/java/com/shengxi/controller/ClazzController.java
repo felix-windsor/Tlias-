@@ -86,8 +86,10 @@ public class ClazzController {
         java.util.List<java.util.Map<String,Object>> opts = list.stream()
                 .map(c -> {
                     java.util.Map<String,Object> m = new java.util.HashMap<>();
-                    m.put("label", c.getName());
-                    m.put("value", c.getId());
+                    // m.put("label", c.getName());
+                    // m.put("value", c.getId());
+                    m.put("id", c.getId());
+                    m.put("name", c.getName());
                     return m;
                 }).toList();
         return Result.success(opts);

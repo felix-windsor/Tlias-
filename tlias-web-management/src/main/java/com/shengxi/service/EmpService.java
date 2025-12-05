@@ -37,4 +37,9 @@ public interface EmpService {
      * @param pageSize 每页记录数
      */
     //PageResult<Emp> page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 根据职位查询员工（用于下拉）
+     */
+    java.util.List<Emp> listByJob(Integer job);
 }

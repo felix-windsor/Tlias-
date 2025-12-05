@@ -36,6 +36,12 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
+    /** 别名：支持 /emps/list 作为分页查询路径 */
+    @GetMapping("/list")
+    public Result pageAlias(EmpQueryParam empQueryParam){
+        return page(empQueryParam);
+    }
+
     /**
      * 新增员工
      */
@@ -61,7 +67,7 @@ public class EmpController {
     /**
      * 根据ID查询员工信息
      */
-    @GetMapping("/{id}")
+    @GetMapping("/{id:\\d+}")
     public Result getInfo(@PathVariable Integer id){
         log.info("根据ID查询员工信息: {}", id);
         Emp emp = empService.getInfo(id);
@@ -76,5 +82,31 @@ public class EmpController {
         log.info("修改员工信息, {}", emp);
         empService.update(emp);
         return Result.success();
+    }
+
+    /**
+     * 员工下拉选项（默认返回班主任）
+     */
+    @GetMapping(value = "", params = "type=options")
+    public Result options(@RequestParam(required = false) Integer job){
+        Integer j = (job == null ? 1 : job); // 1: 班主任
+        java.util.List<com.shengxi.pojo.Emp> list = empService.listByJob(j);
+        java.util.List<java.util.Map<String,Object>> opts = list.stream()
+                .map(e -> {
+                    java.util.Map<String,Object> m = new java.util.HashMap<>();
+                    // 兼容两种字段命名，前端可任选其一
+                    // m.put("label", e.getName());
+                    // m.put("value", e.getId());
+                    m.put("id", e.getId());
+                    m.put("name", e.getName());
+                    return m;
+                }).toList();
+        return Result.success(opts);
+    }
+
+    /** 同路径别名：/emps/options */
+    @GetMapping("/options")
+    public Result optionsAlias(@RequestParam(required = false) Integer job){
+        return options(job);
     }
 }

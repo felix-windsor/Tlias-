@@ -107,6 +107,17 @@
         from emp group by gender ;
     </select>
 
+    <!-- 根据职位查询员工（用于下拉） -->
+    <select id="listByJob" parameterType="int" resultType="com.shengxi.pojo.Emp">
+        select id, name from emp
+        <where>
+            <if test="_parameter != null">
+                job = #{_parameter}
+            </if>
+        </where>
+        order by id
+    </select>
+
 </mapper>
 
 

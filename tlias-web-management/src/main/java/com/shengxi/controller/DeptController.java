@@ -31,6 +31,12 @@ public class DeptController {
         return Result.success(deptList);
     }
 
+    /** 别名：支持 /depts/list 作为列表查询路径 */
+    @GetMapping("/list")
+    public Result listAlias(){
+        return list();
+    }
+
     /**
      * 删除部门 - 方式一: HttpServletRequest 获取请求参数
      */
@@ -87,7 +93,7 @@ public class DeptController {
     /**
      * 根据ID查询部门
      */
-    @GetMapping("/{id}")
+    @GetMapping("/{id:\\d+}")
     public Result getInfo(@PathVariable Integer id){
         //System.out.println("根据ID查询部门 : " + id);
         log.info("根据ID查询部门: {}", id);
